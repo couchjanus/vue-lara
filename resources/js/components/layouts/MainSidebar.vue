@@ -1,14 +1,7 @@
 <template>
     <aside class="sidebar">
                 <section class="sidebar-item">
-                    <ul class="sidebar-list">
-                        <li><b>1 BTC = $13,2323</b></li>
-                        <li><b>1 BCH = $13,2323</b></li>
-                        <li><b>1 ETH = $13,2323</b></li>
-                        <li><b>1 LTC = $13,2323</b></li>
-                        <li><b>1 DAS = $13,2323</b></li>
-                        <li><b>1 BCC = $13,2323</b></li>
-                    </ul>
+                    <Categories></Categories>
                 </section>
                 <section class="sidebar-item">
                     <h2 class="title">POPULAR POSTS</h2>
@@ -80,12 +73,16 @@
 </template>
 
 <script>
+import Categories from './Categories.vue';
 export default {
     name: `MainSidebar`,
     data() {
         return {
             year: new Date().getFullYear(),
         };
+    },
+    components: {
+      Categories,
     },
     
 };

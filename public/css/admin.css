@@ -10928,3 +10928,214 @@ a.text-dark:focus {
   }
 }
 
+.bg-gradiant-green-blue {
+  background: #00a8f9;
+  background: linear-gradient(61deg, #00c7f9 65%, #00ffcf 100%);
+}
+
+.btn-blue {
+  background-color: #00a8f9;
+}
+
+.btn-green {
+  background-color: #00ffb3;
+}
+
+.nav-shadow {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.bg-sidebar {
+  background-color: #3d3d3d;
+}
+
+.sidebar {
+  min-height: calc(100vh - 56px);
+}
+
+.bg-content {
+  background-color: #fff3cd;
+}
+
+.bg-sidebar > a {
+  border-left: 3px solid #3d3d3d;
+  font-size: 15px;
+  /*color: rgb(0,168,249);*/
+  color: white;
+}
+
+.bg-sidebar > a > i {
+  color: #00c7f9;
+  /*color: rgb(255,255,255);*/
+}
+
+.bg-sidebar a:hover {
+  border-left: 3px solid #0059f9;
+  color: #ffffff;
+  text-shadow: 0 0 2px white, 0 0 5px #96cdfd, 0 0 10px #00a8f9;
+  transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.bg-sidebar > a:hover > i {
+  color: white;
+}
+
+.bg-juicy-orange {
+  background: #FF8008;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFC837, #FF8008);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.bg-dracula {
+  background: #f857a6;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ff5858, #f857a6);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.bg-neon-life {
+  background: #00c6ff;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.bg-auth-form {
+  background: #FF512F;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #DD2476, #FF512F);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100vh;
+}
+
+.uploader label {
+  width: 100%;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 7px;
+  border: 3px solid #eee;
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.uploader label:hover {
+  border: 3px solid #454cad;
+  box-shadow: inset 0 0 0 6px #eee;
+}
+
+.uploader label.hover #start i.fa {
+  transform: scale(0.8);
+  opacity: 0.3;
+}
+
+.uploader #start {
+  width: 100%;
+}
+
+.uploader #start i.fa {
+  font-size: 50px;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.uploader #start.hidden {
+  display: none;
+}
+
+.uploader #response {
+  width: 100%;
+}
+
+.uploader #response.hidden {
+  display: none;
+}
+
+.uploader #response #messages {
+  margin-bottom: 0.5rem;
+}
+
+.uploader #file-image {
+  display: inline;
+  margin: 0 auto 0.5rem auto;
+  max-width: 180px;
+}
+
+.uploader #file-image.hidden {
+  display: none;
+}
+
+.uploader #notimage {
+  width: 100%;
+}
+
+.uploader #notimage.hidden {
+  display: none;
+}
+
+.uploader progress,
+.uploader .progress {
+  display: inline;
+  margin: 0 auto;
+  max-width: 180px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+.uploader .progress[value]::-webkit-progress-bar {
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+.uploader .progress[value]::-webkit-progress-value {
+  background: linear-gradient(to right, #393f90 0%, #454cad 50%);
+  border-radius: 4px;
+}
+
+.uploader .progress[value]::-moz-progress-bar {
+  background: linear-gradient(to right, #393f90 0%, #454cad 50%);
+  border-radius: 4px;
+}
+
+.uploader input[type=file] {
+  display: none;
+}
+
+.uploader div {
+  margin: 0 0 0.5rem 0;
+  color: #5f6982;
+}
+
+.uploader .btn {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 1rem 0.5rem;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: initial;
+  border: none;
+  border-radius: 0.2rem;
+  outline: none;
+  padding: 0 1rem;
+  height: 36px;
+  line-height: 36px;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  background: #454cad;
+  border-color: #454cad;
+  cursor: pointer;
+}
+
