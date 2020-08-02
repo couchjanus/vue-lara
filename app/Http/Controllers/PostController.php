@@ -16,11 +16,11 @@ class PostController extends Controller
     public function index()
     {
         // $posts = Post::has('comments')->get();
-        $posts = Post::withCount('comments')->whereHas('comments', function($query){
-            $query->where('created_at', '>', now()->subDay());
-        })->get();
-        $posts = Post::where('published', 1)->latest()->with('user')->with('category')->simplePaginate(5);
-        return view('blog.index', compact('posts'));
+        // $posts = Post::withCount('comments')->whereHas('comments', function($query){
+        //     $query->where('created_at', '>', now()->subDay());
+        // })->get();
+        // $posts = Post::where('published', 1)->latest()->with('user')->with('category')->simplePaginate(5);
+        // return view('blog.index', compact('posts'));
     }
 
     /**

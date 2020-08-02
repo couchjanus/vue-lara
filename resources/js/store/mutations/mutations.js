@@ -8,6 +8,6 @@ export default {
         state.categories = categories;
     },
     SET_POSTS_TO_STATE: (state, posts) => {
-        state.posts = retails;
+        state.posts = posts;
     },
 }

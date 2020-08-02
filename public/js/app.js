@@ -54246,19 +54246,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Home = function Home() {
-  return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../views/Home.vue */ "./resources/js/views/Home.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../views/Home.vue */ "./resources/js/views/Home.vue"));
 };
 
 var Category = function Category() {
-  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../views/Category.vue */ "./resources/js/views/Category.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../views/Category.vue */ "./resources/js/views/Category.vue"));
 };
 
 var Post = function Post() {
-  return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../views/Post.vue */ "./resources/js/views/Post.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(5), __webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ../views/Post.vue */ "./resources/js/views/Post.vue"));
 };
 
 var About = function About() {
-  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../views/About.vue */ "./resources/js/views/About.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../views/About.vue */ "./resources/js/views/About.vue"));
 };
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -54267,11 +54267,11 @@ var routes = [{
   name: 'Home',
   component: Home
 }, {
-  path: '/category',
+  path: '/category/:id',
   name: 'Category',
   component: Category
 }, {
-  path: '/post',
+  path: '/post/:id',
   name: 'Post',
   component: Post
 }, {
@@ -54439,7 +54439,7 @@ __webpack_require__.r(__webpack_exports__);
     state.categories = categories;
   },
   SET_POSTS_TO_STATE: function SET_POSTS_TO_STATE(state, posts) {
-    state.posts = retails;
+    state.posts = posts;
   }
 });
 

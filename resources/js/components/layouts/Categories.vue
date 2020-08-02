@@ -1,7 +1,9 @@
 <template>
     <!--categories-list-->
     <ul class="sidebar-list">
-        <li v-for="category in categories" :key="category.id"><a :href="`#`" @click="getCategoryId(category.id)"> {{ category.name }}</a></li>
+        <li v-for="category in categories" :key="category.id">
+          <router-link :to="`/category/${category.id}`">{{ category.name }}</router-link>
+        </li>
     </ul>
     <!--/categories-list-->  
 </template>
@@ -31,15 +33,7 @@ export default {
       ]),
   },
   methods: {
-    getCategoryId(id){
-      this.category_id=id;
-      this.GET_POSTS_BY_CATEGORY_API(this.category_id)
-      .then(() => {
-        this.posts = this.POSTS_BY_CATEGORY;
-      });
-    },
     ...mapActions([
-        'GET_POSTS_BY_CATEGORY_API',
         'GET_CATEGORIES_API'
     ]),
   }
