@@ -188,6 +188,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -213,12 +220,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MainHeader",
   data: function data() {
     return {
       year: new Date().getFullYear()
     };
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['IS_LOGGED'])),
+  methods: {
+    logout: function logout() {
+      this.$store.dispatch('LOGOUT');
+    }
   }
 });
 
@@ -577,7 +600,7 @@ var staticRenderFns = [
           _c("section", { staticClass: "footer-col" }, [
             _c("img", {
               staticClass: "footer-logo",
-              attrs: { src: "images/logo-white.png", alt: "" }
+              attrs: { src: "/images/logo-white.png", alt: "" }
             }),
             _vm._v(" "),
             _c("section", { staticClass: "clear-fix" }),
@@ -738,7 +761,7 @@ var render = function() {
     _c("nav", { staticClass: "header" }, [
       _c("img", {
         staticClass: "header-logo",
-        attrs: { src: "images/logo-black.png", alt: "" }
+        attrs: { src: "/images/logo-black.png", alt: "" }
       }),
       _vm._v(" "),
       _vm._m(0),
@@ -776,7 +799,67 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _vm._m(4)
+        _vm._m(4),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "header-menu-item" },
+          [
+            _vm.IS_LOGGED
+              ? _c(
+                  "router-link",
+                  {
+                    staticClass: "header-menu-item-link",
+                    attrs: { to: "/profile" }
+                  },
+                  [_vm._v("Profile")]
+                )
+              : _c(
+                  "router-link",
+                  {
+                    staticClass: "header-menu-item-link",
+                    attrs: { to: "/signin" }
+                  },
+                  [_vm._v("Login")]
+                )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "header-menu-item" },
+          [
+            !_vm.IS_LOGGED
+              ? _c(
+                  "router-link",
+                  {
+                    staticClass: "header-menu-item-link",
+                    attrs: { to: { name: "Register" } }
+                  },
+                  [_vm._v("Register")]
+                )
+              : _vm._e()
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("li", { staticClass: "header-menu-item" }, [
+          _vm.IS_LOGGED
+            ? _c(
+                "button",
+                {
+                  staticClass: "header-menu-item-link",
+                  on: {
+                    click: function($event) {
+                      return _vm.logout()
+                    }
+                  }
+                },
+                [_vm._v("Logout")]
+              )
+            : _vm._e()
+        ])
       ]),
       _vm._v(" "),
       _c("section", { staticClass: "clear-fix" })
@@ -1143,7 +1226,7 @@ var staticRenderFns = [
       _c("section", { staticClass: "popular-post" }, [
         _c("img", {
           staticClass: "popular-post-img",
-          attrs: { src: "images/polular-1-100x100.jpg", alt: "" }
+          attrs: { src: "/images/polular-1-100x100.jpg", alt: "" }
         }),
         _vm._v(" "),
         _c("section", { staticClass: "popular-post-title" }, [
@@ -1174,7 +1257,7 @@ var staticRenderFns = [
       _c("section", { staticClass: "popular-post" }, [
         _c("img", {
           staticClass: "popular-post-img",
-          attrs: { src: "images/polular-2-100x100.jpg", alt: "" }
+          attrs: { src: "/images/polular-2-100x100.jpg", alt: "" }
         }),
         _vm._v(" "),
         _c("section", { staticClass: "popular-post-title" }, [
@@ -1205,7 +1288,7 @@ var staticRenderFns = [
       _c("section", { staticClass: "popular-post" }, [
         _c("img", {
           staticClass: "popular-post-img",
-          attrs: { src: "images/polular-3-100x100.jpg", alt: "" }
+          attrs: { src: "/images/polular-3-100x100.jpg", alt: "" }
         }),
         _vm._v(" "),
         _c("section", { staticClass: "popular-post-title" }, [
@@ -1236,7 +1319,7 @@ var staticRenderFns = [
       _c("section", { staticClass: "popular-post" }, [
         _c("img", {
           staticClass: "popular-post-img",
-          attrs: { src: "images/polular-4-100x100.jpg", alt: "" }
+          attrs: { src: "/images/polular-4-100x100.jpg", alt: "" }
         }),
         _vm._v(" "),
         _c("section", { staticClass: "popular-post-title" }, [

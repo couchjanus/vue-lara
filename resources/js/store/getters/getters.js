@@ -8,5 +8,8 @@ export default {
     POSTS(state) {
         return state.posts;
     },
-
+    USER(state) {
+        return state.user;
+    },
+    IS_LOGGED: state => !!state.user
 }

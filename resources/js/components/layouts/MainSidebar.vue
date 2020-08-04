@@ -6,7 +6,7 @@
                 <section class="sidebar-item">
                     <h2 class="title">POPULAR POSTS</h2>
                     <section class="popular-post">
-                        <img class="popular-post-img" src="images/polular-1-100x100.jpg" alt="">
+                        <img class="popular-post-img" src="/images/polular-1-100x100.jpg" alt="">
                         <section class="popular-post-title">
                             <h3>
                                 <a href="#"><b>Bitcoin Billionares Hidding in Plain Sight</b></a>
@@ -19,7 +19,7 @@
                         <section class="clear-fix"></section>
                     </section>
                     <section class="popular-post">
-                        <img class="popular-post-img" src="images/polular-2-100x100.jpg" alt="">
+                        <img class="popular-post-img" src="/images/polular-2-100x100.jpg" alt="">
                         <section class="popular-post-title">
                             <h3 >
                                 <a href="#"><b>Bitcoin Billionares Hidding in Plain Sight</b></a>
@@ -32,7 +32,7 @@
                         <section class="clear-fix"></section>
                     </section>
                     <section class="popular-post">
-                        <img class="popular-post-img" src="images/polular-3-100x100.jpg" alt="">
+                        <img class="popular-post-img" src="/images/polular-3-100x100.jpg" alt="">
                         <section class="popular-post-title">
                             <h3>
                                 <a href="#"><b>Bitcoin Billionares Hidding in Plain Sight</b></a>
@@ -45,7 +45,7 @@
                         <section class="clear-fix"></section>
                     </section>
                     <section class="popular-post">
-                        <img class="popular-post-img" src="images/polular-4-100x100.jpg" alt="">
+                        <img class="popular-post-img" src="/images/polular-4-100x100.jpg" alt="">
                         <section class="popular-post-title">
                             <h3>
                                 <a href="#"><b>Bitcoin Billionares Hidding in Plain Sight</b></a>

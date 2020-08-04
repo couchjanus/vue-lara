@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"login":"login"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -54246,19 +54246,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Home = function Home() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../views/Home.vue */ "./resources/js/views/Home.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../views/Home.vue */ "./resources/js/views/Home.vue"));
 };
 
 var Category = function Category() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../views/Category.vue */ "./resources/js/views/Category.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ../views/Category.vue */ "./resources/js/views/Category.vue"));
 };
 
 var Post = function Post() {
-  return Promise.all(/*! import() */[__webpack_require__.e(5), __webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ../views/Post.vue */ "./resources/js/views/Post.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(7), __webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../views/Post.vue */ "./resources/js/views/Post.vue"));
 };
 
 var About = function About() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../views/About.vue */ "./resources/js/views/About.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../views/About.vue */ "./resources/js/views/About.vue"));
+};
+
+var Profile = function Profile() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../views/Profile.vue */ "./resources/js/views/Profile.vue"));
+};
+
+var Register = function Register() {
+  return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../views/Register.vue */ "./resources/js/views/Register.vue"));
 };
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -54278,11 +54286,40 @@ var routes = [{
   path: "/about",
   name: "About",
   component: About
+}, {
+  path: '/profile',
+  name: 'Profile',
+  component: Profile
+}, {
+  path: "/register",
+  name: "Register",
+  component: Register,
+  meta: {
+    guestOnly: true
+  }
+}, {
+  path: '/signin',
+  name: 'Login',
+  component: function component() {
+    return __webpack_require__.e(/*! import() | login */ "login").then(__webpack_require__.bind(null, /*! ../views/Login.vue */ "./resources/js/views/Login.vue"));
+  }
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: "history",
   base: process.env.BASE_URL,
   routes: routes
+});
+router.beforeEach(function (to, from, next) {
+  var loggedIn = localStorage.getItem('user');
+
+  if (to.matched.some(function (record) {
+    return record.meta.auth;
+  }) && !loggedIn) {
+    next('/signin');
+    return;
+  }
+
+  next();
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
@@ -54345,6 +54382,31 @@ axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = 'http://127.0.0.
       console.log(error);
       return error;
     });
+  },
+  LOGIN: function LOGIN(_ref4, credentials) {
+    var commit = _ref4.commit;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/login', credentials).then(function (_ref5) {
+      var data = _ref5.data;
+      commit('SET_USER_DATA', data);
+    });
+  },
+  LOGOUT: function LOGOUT(_ref6) {
+    var commit = _ref6.commit;
+    commit('CLEAR_USER_DATA');
+  },
+  REGISTER: function REGISTER(_ref7, data) {
+    var commit = _ref7.commit;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/register", data).then(function (_ref8) {
+      var data = _ref8.data;
+      commit('SET_REGISTER_DATA', data);
+    });
+  },
+  AUTH: function AUTH(_ref9) {
+    var commit = _ref9.commit;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/user").then(function (_ref10) {
+      var data = _ref10.data;
+      commit('SET_AUTH_USER', data);
+    });
   }
 });
 
@@ -54368,6 +54430,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   POSTS: function POSTS(state) {
     return state.posts;
+  },
+  USER: function USER(state) {
+    return state.user;
+  },
+  IS_LOGGED: function IS_LOGGED(state) {
+    return !!state.user;
   }
 });
 
@@ -54409,7 +54477,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
   state: {
     posts: [],
     posts_by_category: [],
-    categories: []
+    categories: [],
+    user: null
   },
   mutations: _mutations_mutations__WEBPACK_IMPORTED_MODULE_4__["default"],
   actions: actions,
@@ -54440,6 +54509,22 @@ __webpack_require__.r(__webpack_exports__);
   },
   SET_POSTS_TO_STATE: function SET_POSTS_TO_STATE(state, posts) {
     state.posts = posts;
+  },
+  SET_USER_DATA: function SET_USER_DATA(state, userData) {
+    state.user = userData;
+    localStorage.setItem('user', JSON.stringify(userData));
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common.Authorization = "Bearer ".concat(userData.token);
+  },
+  SET_REGISTER_DATA: function SET_REGISTER_DATA(state, userData) {
+    state.user = userData;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common.Authorization = "Bearer ".concat(userData.token);
+  },
+  CLEAR_USER_DATA: function CLEAR_USER_DATA() {
+    localStorage.removeItem('user');
+    location.href = '/';
+  },
+  SET_AUTH_USER: function SET_AUTH_USER(state, user) {
+    state.user = user;
   }
 });
 

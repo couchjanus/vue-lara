@@ -815,3 +815,136 @@ b {
   font-size: 10px;
 }
 
+.login {
+  width: 400px;
+  margin: 16px auto;
+  font-size: 16px;
+}
+
+.login .login-header {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.login .login-header {
+  background: #fe980f;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.login p {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 12px;
+}
+
+.login input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.login input[type=email],
+.login input[type=password] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+}
+
+.login input[type=email]:focus,
+.login input[type=password]:focus {
+  border-color: #888;
+}
+
+.login input[type=submit] {
+  background: #fe980f;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login input[type=submit]:hover {
+  background: #ff660f;
+}
+
+.login input[type=submit]:focus {
+  border-color: #ff0;
+}
+
+/* The triangle form is achieved by a CSS hack */
+
+.login-triangle {
+  width: 0;
+  margin-right: auto;
+  margin-left: auto;
+  border: 12px solid transparent;
+  border-bottom-color: #fe980f;
+}
+
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
+}
+
+.cart {
+  position: fixed;
+  right: 0em;
+  top: 0em;
+  margin-bottom: 100px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  z-index: 1;
+}
+
+.cart__total {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 2em 3em;
+  display: flex;
+  justify-content: center;
+  background: green;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.cart .total__name {
+  margin-right: 2em;
+}
+
+.cart-item {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 8px 0 #e0e0e0;
+  padding: 2em;
+  margin-bottom: 2em;
+}
+
+.cart-item__image {
+  max-width: 50px;
+}
+
+.cart-item .quantity__btn {
+  cursor: pointer;
+}
+
+.cart-item .quantity__tools {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+

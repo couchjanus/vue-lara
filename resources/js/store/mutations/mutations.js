@@ -10,4 +10,23 @@ export default {
     SET_POSTS_TO_STATE: (state, posts) => {
         state.posts = posts;
     },
+
+    SET_USER_DATA(state, userData) {
+        state.user = userData
+        localStorage.setItem('user', JSON.stringify(userData))
+        axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`
+    },
+
+    SET_REGISTER_DATA(state, userData) {
+        state.user = userData;
+        axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`;
+    },
+
+    CLEAR_USER_DATA() {
+        localStorage.removeItem('user');
+        location.href = '/';
+    },
+    SET_AUTH_USER(state, user) {
+        state.user = user;
+    }
 }

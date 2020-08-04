@@ -74,6 +74,167 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
+## Laravel Sanctum (https://laravel.com/docs/7.x/sanctum)
+
+## Install Laravel Sanctum.
+```
+composer require laravel/sanctum
+```
+Publish the Sanctum configuration and migration files using the vendor:publish Artisan command. The sanctum configuration file will be placed in your config directory:
+```
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+```
+Run your database migrations to create a database table in which to store API tokens:
+```
+php artisan migrate
+```
+Add the Sanctum's middleware to your api middleware group within your app/Http/Kernel.php
+### ../app/Http/Kernel.php
+```php
+
+
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
+
+...
+
+    protected $middlewareGroups = [
+        ...
+
+        'api' => [
+            EnsureFrontendRequestsAreStateful::class,
+            'throttle:60,1',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+    ];
+
+    ...
+],
+```
+## Tokens for users
+To use tokens for users, we have to add HasApiTokens to the User model in app/User.php.
+### ../app/User.php 
+```php
+
+
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+}
+```
+## Let's create the seeder
+
+Let's create the seeder for the User model. 
+We'll need that a bit later to test the login proccess.
+```
+php artisan make:seeder UsersTableSeeder
+```
+Now let's insert
+```php
+DB::table('users')->insert([
+    'name' => 'John Doe',
+    'email' => 'john@doe.com',
+    'password' => Hash::make('password')
+]);
+```
+into the run() function in database/seeds/UsersTableSeeder.php
+
+To seed users table with user, let's run:
+```
+php artisan db:seed --class=UsersTableSeeder
+```
+So now we have a new user in our database called John Doe with email john@doe.com and password password.
+
+## Let's create a /login
+
+Let's create a /login route in the routes/api.php file:
+### ../routes/api.php
+```php
+
+
+use App\User;
+use Illuminate\Support\Facades\Hash;
+
+Route::post('/login', function (Request $request) {
+    $data = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+
+    if (!$user || !Hash::check($request->password, $user->password)) {
+        return response([
+            'message' => ['These credentials do not match our records.']
+        ], 404);
+    }
+
+    $token = $user->createToken('my-app-token')->plainTextToken;
+
+    $response = [
+        'user' => $user,
+        'token' => $token
+    ];
+
+    return response($response, 201);
+});
+```
+## Let's send a POST request
+
+Let's send a POST request with email john@doe.com and password password as parameters to the http://my-app.test/api/login route. You can use the Postman(https://www.postman.com/) or Insomnia(https://insomnia.rest/) software packages to accomplish this.
+
+If everything is working well, we will receive a JSON object as response to our request:
+```php
+{
+    "user": {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john@doe.com",
+        "email_verified_at": null,
+        "created_at": null,
+        "updated_at": null
+    },
+    "token": "AbQzDgXa..."
+}
+```
+## Next, we need to change some middleware. 
+We do this in the /routes/api.php file by replacing auth:api with auth:sanctum:
+```php
+../routes/api.php
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+```
+## CORS handling
+Before we continue to the front end, we have to setup cross-origin requests CORS handling.
+
+### ../config/cors.php
+```php
+
+
+    'paths' => ['api/*', 'login', 'logout'],
+
+    'allowed_methods' => ['*'],
+
+    'allowed_origins' => ['*'],
+
+    'allowed_origins_patterns' => [],
+
+    'allowed_headers' => ['*'],
+
+    'exposed_headers' => [],
+
+    'max_age' => 0,
+
+    'supports_credentials' => true,
+
+```
+### ../.env
+```php
+SANCTUM_STATEFUL_DOMAINS=127.0.0.1
+```
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

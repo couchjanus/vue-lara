@@ -14,6 +14,7 @@ export default new Vuex.Store({
         posts: [],
         posts_by_category: [],
         categories: [],
+        user: null
     },
     mutations,
     actions,

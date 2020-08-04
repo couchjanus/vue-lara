@@ -20,49 +20,12 @@
                             <li><i class="fas fa-bolt text-yellow"></i> 30,190</li>
                             <li><i class="fas fa-comments text-yellow"></i> 47</li>
                         </ul>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
-
                         <p class="footer-p-margin-20">{{ post.content }}
                         </p>
                     </article>
-                    <section class="comment-box">
-                        <h3 class="comment-box-header">
-                            John
-                            <span class="comment-box-date">Jan 24, 2018</span>
-                        </h3>
-                        <comment>
-                            Thank's
-                        </comment>
-                    </section>
-
-                    <section class="comment-box">
-                        <h3 class="comment-box-header">
-                            Ali
-                            <span class="comment-box-date">Jan 25, 2018</span>
-                        </h3>
-                        <comment>
-                            It's great!!!!
-                        </comment>
-                    </section>
-                    <section class="comment-box">
-                        <h3 class="comment-box-header">
-                            mohammad
-                            <span class="comment-box-date">Jan 28, 2018</span>
-                        </h3>
-                        <comment>
-                            It's great!!!!
-                        </comment>
-                    </section>
-
-
-
-
-                    <form action="" method="post">
-                        <input name="article_id" type="hidden" value="">
-                        <textarea class="comment" name="comment" rows="4" required placeholder="your comment ..."></textarea>
-                        <input class="submit" type="submit" value="store comment">
-                    </form>
+                    
+                    <Comments :post_id="post.id"></Comments>
+                    
                 </section><!--end of main news-->
             </main>
         </template>
@@ -78,13 +41,15 @@ import AppLayout from "../components/layouts/AppLayout.vue";
 import MainIntro from "../components/layouts/MainIntro.vue";
 import MainSidebar from "../components/layouts/MainSidebar.vue";
 import axios from "axios";
+import Comments from '../components/posts/Comments'
 
 export default {
     name: "Post",
     components: {
         AppLayout,
         MainIntro,
-        MainSidebar
+        MainSidebar,
+        Comments
     },
     data() {
         return {
@@ -94,6 +59,7 @@ export default {
                 return {};
                 },
             },
+            
         }
     },
     mounted: function() {

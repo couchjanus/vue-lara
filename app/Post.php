@@ -35,7 +35,7 @@ class Post extends Model
     
     public function getDescriptionAttribute()
     {
-        return substr($this->content, 0, 70) . "...";
+        return substr($this->content, 0, 100) . "...";
     }
 
     public function getShortTitleAttribute()

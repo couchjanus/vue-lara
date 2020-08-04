@@ -40,4 +40,29 @@ export default {
                 return error;
             })
     },
+    LOGIN({ commit }, credentials) {
+        return axios
+            .post('/login', credentials)
+            .then(({ data }) => {
+                commit('SET_USER_DATA', data)
+            })
+    },
+
+    LOGOUT({ commit }) {
+        commit('CLEAR_USER_DATA');
+
+    },
+
+    REGISTER({ commit }, data) {
+        return axios.post("/register", data)
+            .then(({ data }) => {
+                commit('SET_REGISTER_DATA', data)
+            })
+    },
+    AUTH({ commit }) {
+        return axios.get("/user")
+            .then(({ data }) => {
+                commit('SET_AUTH_USER', data)
+            })
+    }
 }

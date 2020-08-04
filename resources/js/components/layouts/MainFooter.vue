@@ -3,7 +3,7 @@
     <section class="app bg-map">
         <section class="footer-row">
             <section class="footer-col">
-                <img class="footer-logo" src="images/logo-white.png" alt="">
+                <img class="footer-logo" src="/images/logo-white.png" alt="">
                 <section class="clear-fix"></section>
                 <p class="footer-p">Bit coin is an open-source, peer-to-peer, digital decentralized cryptocurrency. Powered by blockchain technology, its defining characteristic is</p>
                 <p class="footer-p footer-p-margin-20">
