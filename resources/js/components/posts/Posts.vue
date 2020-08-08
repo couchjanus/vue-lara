@@ -10,8 +10,8 @@
                 <ul class="info-bar">
                     <li class=""><span class="text-muted">by</span> <a href="#" class="color-black"><b>Olivia Capzallo,</b></a>
                     <span class="text-muted">{{post.created_at}}</span></li>
-                    <li><i class="fas fa-bolt text-yellow"></i> 30,190</li>
-                    <li><i class="fas fa-comments text-yellow"></i> 47</li>
+                    <li><i class="fas fa-bolt text-yellow"></i> {{post.votes}}</li>
+                    <li><i class="fas fa-comments text-yellow"></i>  {{post.comments_count}}</li>
                 </ul>
             </article>
         </section>

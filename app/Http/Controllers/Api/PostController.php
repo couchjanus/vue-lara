@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::withCount('comments')->get();
         return new PostResource($posts);
     }
 
@@ -23,7 +23,8 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = Post::whereId($id)->firstOrFail();
+        $post = Post::whereId($id)->with('comments')->withCount('comments')->firstOrFail();
+        $post->increment('votes');
         return new PostResource($post);
     }
 }

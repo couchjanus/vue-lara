@@ -1,28 +1,30 @@
 <template>
-    <section class="comment-box">
+    <section>
         <h3 class="comment-box-header">
-            {{ creator_name() }}
-            <span class="comment-box-date">{{posted_at()}}</span>
+            {{ comment.creator.name }}
+            <span class="comment-box-date">{{comment.created_at}}</span>
         </h3>
         <p>{{ comment.body }}</p>
     </section>
 </template>
 
 <script>
-
-// import {mapActions, mapGetters} from 'vuex';
-
 export default {
     name: `Comment`,
- 
-    props: ['comment'],
-    computed: {
-        creator_name(){
-            return this.comment.creator.name;
-        },
-        posted_at() {
-            return this.comment.created_at;
-        },
-    }
+    props: {
+        comment: {
+            type: Object,
+            default: function () {
+                return {  
+                    
+                }
+            }
+        }
+    },
+        // ['comment'],
+    data: function () {
+        return {
+        }
+    },
 };
 </script>

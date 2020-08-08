@@ -12,10 +12,8 @@
                         <a href="#">sub menu 3</a>
                     </span>
                 </li>
-                <li class="header-menu-item"><a class="header-menu-item-link" href="">GUIDES & ANALYTICS</a></li>
                 <li class="header-menu-item"><a class="header-menu-item-link" href="">EVENTS</a></li>
                 <li class="header-menu-item"><router-link class="header-menu-item-link" to="/about">About</router-link></li>
-                <li class="header-menu-item"><a class="header-menu-item-link" href="">ICON CLAENDER</a></li>
                 <li class="header-menu-item">
                     <router-link class="header-menu-item-link" to="/profile" v-if="IS_LOGGED">Profile</router-link>
                     <router-link class="header-menu-item-link" to="/signin" v-else>Login</router-link>

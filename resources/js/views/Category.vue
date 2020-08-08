@@ -1,9 +1,5 @@
 <template>
   <app-layout>
-    <template v-slot:intro>
-      <MainIntro></MainIntro>
-    </template>
-    
         <template v-slot:default>
             <main class="main">
                 <section class="main-crypto-mining-news">
@@ -37,7 +33,6 @@
 
 <script>
 import AppLayout from "../components/layouts/AppLayout.vue";
-import MainIntro from "../components/layouts/MainIntro.vue";
 import MainSidebar from "../components/layouts/MainSidebar.vue";
 import {mapActions, mapGetters} from 'vuex';
 
@@ -45,7 +40,6 @@ export default {
     name: "Category",
     components: {
         AppLayout,
-        MainIntro,
         MainSidebar
     },
     data() {

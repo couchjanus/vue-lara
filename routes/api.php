@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Http\{Request, Response};
 use Illuminate\Support\Facades\Route;
 use App\User;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +53,16 @@ Route::group(['namespace' => 'Api',], function() {
     Route::get('categories', 'CategoryController@index');
     Route::get('posts/{id}', 'PostController@getByCategory');
     Route::get('post/{id}', 'PostController@show')->name('api.post.show');
-    Route::get('post/{id}/comments', 'CommentController@index');
-    Route::post('/comment','CommentController@store');
     Route::post('register', 'RegisterController@register');
+
+    Route::post(
+        '/comment',
+        function (Request $request) {
+            $user = \App\User::find($request->user_id);
+            $post = \App\Post::find($request->post_id);
+            // dump($post);
+            $post->comment($request->comment, $user);
+            return response()->json(['comment'=>\App\Post::find($request->post_id)->comments->first()], Response::HTTP_OK);
+        }
+    );
 });

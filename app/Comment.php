@@ -26,4 +26,12 @@ class Comment extends Model
     {
         return $this->hasMany(Comment::class, 'parent_id');
     }
+
+    public function createComment(Model $commentable, $data, Model $creator): self
+    {
+        return $commentable->comments()->create(array_merge(['body' => $data], [
+            'creator_id' => $creator->id,
+            'creator_type' => get_class($creator),
+        ]));
+    }
 }

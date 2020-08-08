@@ -54,4 +54,8 @@ class Post extends Model
     {
         return $this->morphMany(Comment::class, 'commentable')->with('creator')->whereNull('parent_id');
     }
+    public function comment($data, Model $creator): Comment
+    {
+        return (new Comment())->createComment($this, $data, $creator);
+    }
 }
