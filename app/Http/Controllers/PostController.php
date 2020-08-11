@@ -22,7 +22,13 @@ class PostController extends Controller
         // $posts = Post::where('published', 1)->latest()->with('user')->with('category')->simplePaginate(5);
         // return view('blog.index', compact('posts'));
     }
-
+    
+    public function home()
+    {
+        $posts = Post::where('published', 1)->latest()->with('user')->withCount('comments')->with('category')->where('category_id', 1)->take(2)->get();
+        $resent = Post::where('published', 1)->latest()->with('user')->withCount('comments')->with('category')->first();
+        return view('index', compact('resent', 'posts'));
+    }
     /**
      * Show the form for creating a new resource.
      *
