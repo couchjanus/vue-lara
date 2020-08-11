@@ -41,11 +41,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     MainHeader: _MainHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
     MainFooter: _MainFooter__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  data: function data() {
-    return {};
-  },
-  created: function created() {}
+  }
 });
 
 /***/ }),

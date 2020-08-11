@@ -31,12 +31,6 @@ export default {
         MainHeader,
         MainFooter
     },
-    data() {
-        return {
-            
-        }
-    },
-    created() {    
-    },
+   
 };
 </script>

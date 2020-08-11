@@ -4,6 +4,9 @@ export default {
     SET_POSTS_BY_CATEGORY_TO_STATE: (state, products) => {
         state.posts_by_category = products;
     },
+    SET_POST_BY_ID_TO_STATE: (state, post) => {
+        state.post = post;
+    },
     SET_CATEGORIES_TO_STATE: (state, categories) => {
         state.categories = categories;
     },

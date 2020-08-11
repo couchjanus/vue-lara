@@ -54239,7 +54239,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 
@@ -54254,7 +54254,7 @@ var Category = function Category() {
 };
 
 var Post = function Post() {
-  return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../views/Post.vue */ "./resources/js/views/Post.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../views/Post.vue */ "./resources/js/views/Post.vue"));
 };
 
 var About = function About() {
@@ -54306,7 +54306,8 @@ var routes = [{
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: "history",
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
+  base: __dirname,
   routes: routes
 });
 router.beforeEach(function (to, from, next) {
@@ -54322,7 +54323,7 @@ router.beforeEach(function (to, from, next) {
   next();
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, "/"))
 
 /***/ }),
 
@@ -54373,8 +54374,18 @@ axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = 'http://127.0.0.
       return error;
     });
   },
-  GET_CATEGORIES_API: function GET_CATEGORIES_API(_ref3) {
+  GET_POST_BY_ID: function GET_POST_BY_ID(_ref3, id) {
     var commit = _ref3.commit;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/post/".concat(id)).then(function (post) {
+      commit('SET_POST_BY_ID_TO_STATE', post.data.data);
+      return post;
+    })["catch"](function (error) {
+      console.log(error);
+      return error;
+    });
+  },
+  GET_CATEGORIES_API: function GET_CATEGORIES_API(_ref4) {
+    var commit = _ref4.commit;
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/categories").then(function (categories) {
       commit('SET_CATEGORIES_TO_STATE', categories.data.data);
       return categories;
@@ -54383,28 +54394,28 @@ axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = 'http://127.0.0.
       return error;
     });
   },
-  LOGIN: function LOGIN(_ref4, credentials) {
-    var commit = _ref4.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/login', credentials).then(function (_ref5) {
-      var data = _ref5.data;
+  LOGIN: function LOGIN(_ref5, credentials) {
+    var commit = _ref5.commit;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/login', credentials).then(function (_ref6) {
+      var data = _ref6.data;
       commit('SET_USER_DATA', data);
     });
   },
-  LOGOUT: function LOGOUT(_ref6) {
-    var commit = _ref6.commit;
+  LOGOUT: function LOGOUT(_ref7) {
+    var commit = _ref7.commit;
     commit('CLEAR_USER_DATA');
   },
-  REGISTER: function REGISTER(_ref7, data) {
-    var commit = _ref7.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/register", data).then(function (_ref8) {
-      var data = _ref8.data;
+  REGISTER: function REGISTER(_ref8, data) {
+    var commit = _ref8.commit;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/register", data).then(function (_ref9) {
+      var data = _ref9.data;
       commit('SET_REGISTER_DATA', data);
     });
   },
-  AUTH: function AUTH(_ref9) {
-    var commit = _ref9.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/user").then(function (_ref10) {
-      var data = _ref10.data;
+  AUTH: function AUTH(_ref10) {
+    var commit = _ref10.commit;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/user").then(function (_ref11) {
+      var data = _ref11.data;
       commit('SET_AUTH_USER', data);
     });
   }
@@ -54424,6 +54435,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   POSTS_BY_CATEGORY: function POSTS_BY_CATEGORY(state) {
     return state.posts_by_category;
+  },
+  POST: function POST(state) {
+    return state.post;
   },
   CATEGORIES: function CATEGORIES(state) {
     return state.categories;
@@ -54477,6 +54491,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
   state: {
     posts: [],
     posts_by_category: [],
+    post: {},
     categories: [],
     user: null
   },
@@ -54503,6 +54518,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   SET_POSTS_BY_CATEGORY_TO_STATE: function SET_POSTS_BY_CATEGORY_TO_STATE(state, products) {
     state.posts_by_category = products;
+  },
+  SET_POST_BY_ID_TO_STATE: function SET_POST_BY_ID_TO_STATE(state, post) {
+    state.post = post;
   },
   SET_CATEGORIES_TO_STATE: function SET_CATEGORIES_TO_STATE(state, categories) {
     state.categories = categories;

@@ -157,7 +157,7 @@ var render = function() {
               "h3",
               { staticClass: "article-title" },
               [
-                _c("router-link", { attrs: { to: "/post/" + post.id } }, [
+                _c("router-link", { attrs: { to: "post/" + post.id } }, [
                   _vm._v(_vm._s(post.title))
                 ])
               ],
@@ -168,7 +168,9 @@ var render = function() {
               _c("li", {}, [
                 _c("span", { staticClass: "text-muted" }, [_vm._v("by")]),
                 _vm._v(" "),
-                _vm._m(0, true),
+                _c("a", { staticClass: "color-black", attrs: { href: "#" } }, [
+                  _c("b", [_vm._v(_vm._s(post.user.name) + ",")])
+                ]),
                 _vm._v(" "),
                 _c("span", { staticClass: "text-muted" }, [
                   _vm._v(_vm._s(post.created_at))
@@ -194,16 +196,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "color-black", attrs: { href: "#" } }, [
-      _c("b", [_vm._v("Olivia Capzallo,")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -49,9 +49,7 @@ export default {
             };
             axios.post('/comment', res)
                 .then(response => {
-                    
-
-                    this.$emit('commented', response.data);  
+                    this.$emit('commented');  
                     this.submit = false;
                     this.body = "";
                     

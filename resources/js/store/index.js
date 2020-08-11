@@ -13,6 +13,7 @@ export default new Vuex.Store({
     state: {
         posts: [],
         posts_by_category: [],
+        post: {},
         categories: [],
         user: null
     },

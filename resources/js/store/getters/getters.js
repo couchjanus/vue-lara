@@ -2,6 +2,9 @@ export default {
     POSTS_BY_CATEGORY(state) {
         return state.posts_by_category;
     },
+    POST(state) {
+        return state.post;
+    },
     CATEGORIES(state) {
         return state.categories;
     },

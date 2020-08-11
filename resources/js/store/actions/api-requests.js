@@ -28,6 +28,19 @@ export default {
                 return error;
             })
     },
+
+    GET_POST_BY_ID({ commit }, id) {
+        return axios
+            .get(`/post/${id}`)
+            .then((post) => {
+                commit('SET_POST_BY_ID_TO_STATE', post.data.data);
+                return post;
+            })
+            .catch((error) => {
+                console.log(error)
+                return error;
+            })
+    },
     GET_CATEGORIES_API({ commit }) {
         return axios
             .get(`/categories`)

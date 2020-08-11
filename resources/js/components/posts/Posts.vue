@@ -5,10 +5,10 @@
             <article>
                 <img class="main-news-img" :src="`${post.cover_path}`" alt="">
                 <h3 class="article-title">
-                    <router-link :to="`/post/${post.id}`">{{ post.title }}</router-link>
+                    <router-link :to="`post/${post.id}`">{{ post.title }}</router-link>
                 </h3>
                 <ul class="info-bar">
-                    <li class=""><span class="text-muted">by</span> <a href="#" class="color-black"><b>Olivia Capzallo,</b></a>
+                    <li class=""><span class="text-muted">by</span> <a href="#" class="color-black"><b>{{ post.user.name }},</b></a>
                     <span class="text-muted">{{post.created_at}}</span></li>
                     <li><i class="fas fa-bolt text-yellow"></i> {{post.votes}}</li>
                     <li><i class="fas fa-comments text-yellow"></i>  {{post.comments_count}}</li>
@@ -36,11 +36,13 @@ export default {
         this.posts = this.POSTS;
     });
   },
+
   computed: {
      ...mapGetters([
         'POSTS'
       ]),
   },
+  
   methods: {
     ...mapActions([
         'GET_POSTS_API'
