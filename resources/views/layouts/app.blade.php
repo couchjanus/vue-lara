@@ -29,7 +29,7 @@
 
             <header>
                 <nav class="header">
-                    <a href="{{ url('/') }}"><img class="header-logo" src="images/logo-black.png" alt=""></a>
+                    <a href="{{ url('/') }}"><img class="header-logo" src="/images/logo-black.png" alt=""></a>
                     <button class="header-menu-burger" onclick="showMenu()" type="button"><i
                             class="fas fa-bars"></i></button>
                     <ul class="header-menu" id="menu">

@@ -25,16 +25,10 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('blog.partials._sidebar', function ($view) {
+        View::composer('layouts.aside', function ($view) {
         $view->with('categories', Category::orderBy('name', 'asc')->get());
         });
-        // Можно вместо фасада представления использовать функцию-хелпер view():
-        view()->composer(['blog.partials._sidebar', 'welcome'], \App\Http\ViewComposers\RecentPostsComposer::class);
-        
-        view()->composer('welcome', \App\Http\ViewComposers\FavoritePostsComposer::class);
-        
-        view()->composer('welcome', \App\Http\ViewComposers\FavoriteCategoriesComposer::class);
-        
+        view()->composer('layouts.aside', \App\Http\ViewComposers\FavoritePostsComposer::class);
     }
 }
 

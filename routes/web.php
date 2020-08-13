@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'PostController@home')->name('welcome');
-
+Route::get('blog/{slug}', 'PostController@show')->name('blog.show');
+Route::get('blog_posts/{id}', 'PostController@getPostsByCategory')->name('blog.posts.by.category');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

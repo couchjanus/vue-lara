@@ -56,30 +56,27 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($slug)
     {
-        $post = Post::whereSlug($slug)->with('user')->with('category')->firstOrFail();
-        $hasComments = false;
-
+        $post = Post::whereSlug($slug)->with('user')->with('category')->withCount('comments')->firstOrFail();
         $Key = 'blog' . $post->id;
         if (!\Session::has($Key)) {
             $post->increment('votes');
             \Session::put($Key, 1);
         }
-        
-        return view('blog.show',compact('post', 'hasComments'));
+        return view('blog.show',compact('post'));
     }
 
-    public function getByCategory($id)
+    public function getPostsByCategory($id)
     {
         $category = Category::find($id);
         $posts = $category->posts()
               ->where('published', 1)
               ->with('user')
               ->with('category')
+              ->withCount('comments')
               ->orderBy('created_at', 'desc')
               ->simplePaginate(7);
-        // $categories = DB::table('categories')->take(30)->get();
         return view('blog.index', compact('posts'));
     }
 
